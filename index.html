@@ -23,72 +23,79 @@
       overflow-x: hidden;
     }
 
+    .container {
+      padding: 20px;
+    }
+
     h1 {
-      color: #ad1457;
+      color: #d81b60;
+      font-size: 2rem;
       margin-bottom: 10px;
     }
 
     p.instruction {
       color: #880e4f;
-      margin-bottom: 30px;
       font-size: 1.1rem;
+      margin-bottom: 30px;
     }
 
-    /* Cake Container */
+    /* Cake & Candle Style */
     .cake-container {
       position: relative;
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 120px;
+      margin: 0 auto;
       cursor: pointer;
     }
 
     .cake {
       position: absolute;
       bottom: 0;
-      width: 200px;
-      height: 120px;
+      width: 150px;
+      height: 80px;
       background: #f48fb1;
       border-radius: 10px 10px 0 0;
-      box-shadow: inset 0 -10px 0 #ec407a, 0 8px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .cake::before {
       content: '';
       position: absolute;
-      top: -20px;
+      top: -10px;
       left: 0;
-      width: 200px;
-      height: 40px;
+      width: 150px;
+      height: 20px;
       background: #f06292;
-      border-radius: 20px;
+      border-radius: 10px;
     }
 
-    /* Candle */
     .candle {
       position: absolute;
-      top: 30px;
+      top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 16px;
-      height: 50px;
-      background: linear-gradient(to bottom, #fff, #ffd54f);
-      border-radius: 4px;
+      width: 12px;
+      height: 40px;
+      background: #ffeb3b;
+      border-radius: 3px;
       z-index: 2;
     }
 
-    /* Flame */
     .flame {
       position: absolute;
-      top: -20px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      width: 16px;
-      height: 24px;
+      width: 14px;
+      height: 20px;
       background: #ff9800;
       border-radius: 50% 50% 20% 20%;
-      box-shadow: 0 0 15px #ffeb3b, 0 0 25px #ff9800;
+      box-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722;
       animation: flicker 0.6s infinite alternate;
-      transition: opacity 0.5s ease;
+    }
+
+    .flame.off {
+      display: none;
     }
 
     @keyframes flicker {
@@ -96,103 +103,81 @@
       100% { transform: translateX(-50%) scale(1.1); }
     }
 
-    /* Flame Out Animation */
-    .flame.off {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* Secret Card (Girl's Photo & Message) */
-    .card {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      max-width: 320px;
-      width: 90%;
-      opacity: 0;
-      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 10;
-    }
-
-    .card.show {
-      display: block;
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    .card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
-
-    .card h2 {
-      color: #e91e63;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: #555;
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-
-    /* Overlay */
+    /* Pop-up Card Style */
     .overlay {
-      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 9;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      z-index: 10;
     }
 
-    .overlay.show {
-      display: block;
+    .card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 85%;
+      max-width: 380px;
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 11;
+      pointer-events: none;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: auto;
+    }
+
+    .card img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      color: #e91e63;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
 
-  <h1>Happy Birthday! 🎂</h1>
-  <p class="instruction">မီးဖယောင်းတိုင်လေးကို နှိပ်ပြီး မီးငြိမ်းလိုက်ပါ (သို့မဟုတ် မှုတ်လိုက်ပါ)</p>
+  <div class="container">
+    <h1>Happy Birthday! 🎂</h1>
+    <p class="instruction">မီးဖယောင်းတိုင်လေးကို နှိပ်ပြီး မီးငြိမ်းလိုက်ပါ (သို့) မှုတ်လိုက်ပါ</p>
 
-  <div class="cake-container" id="cakeContainer">
-    <div class="candle">
-      <div class="flame" id="flame"></div>
+    <div class="cake-container" id="cakeContainer">
+      <div class="candle">
+        <div class="flame" id="flame"></div>
+      </div>
+      <div class="cake"></div>
     </div>
-    <div class="cake"></div>
   </div>
 
   <div class="overlay" id="overlay"></div>
 
   <!-- ကောင်မလေးပုံနဲ့ စာသား Card -->
   <div class="card" id="birthdayCard">
-    <!-- ဒီနေရာမှာ ကောင်မလေးပုံ Link ပြောင်းပါ -->
-    <img src="https://ibb.co/b5tGSSTT
-https://ibb.co/5XfKGGQk
-https://ibb.co/TDpVdzbg
-https://ibb.co/cX3txGqt
-https://ibb.co/GfgDt9JK
-https://ibb.co/nN7MKsWT
-https://ibb.co/zHG70s5K
-https://ibb.co/21Mmsw1M
-https://ibb.co/Xx9WKbwS
-https://ibb.co/8DTjBPJH
-https://ibb.co/M5DHLz3c
-https://ibb.co/v4Wqvxt1
-https://ibb.co/20B6q3kr
-https://ibb.co/hx45gZZf">
+    <img src="https://i.ibb.co/b5tGSSTT/image.jpg" alt="Birthday Girl" id="girlPhoto">
     <h2>Happy Birthday My Love! ❤️</h2>
     <p>မွေးနေ့မှာ လိုအင်ဆန္ဒတွေအားလုံး ပြည့်ဝပါစေ။ အမြဲတမ်း ပြုံးပြုံးရွှင်ရွှင်နဲ့ ပျော်ရွှင်ပါစေနော်။</p>
   </div>
@@ -203,7 +188,7 @@ https://ibb.co/hx45gZZf">
     const card = document.getElementById('birthdayCard');
     const overlay = document.getElementById('overlay');
 
-    // မီးဖယောင်းတိုင် ငြိမ်းသွားချိန်လုပ်ဆောင်မယ့် Function
+    // မီးဖယောင်းတိုင် ငြိမ်းသွားချိန်လုပ်ဆောင်မည့် Function
     function extinguishCandle() {
       if (!flame.classList.contains('off')) {
         flame.classList.add('off');
@@ -216,43 +201,8 @@ https://ibb.co/hx45gZZf">
       }
     }
 
-    // 1. ကိတ်မုန့် သို့မဟုတ် မီးကို click နှိပ်ရင် မီးငြိမ်းမည်
     cakeContainer.addEventListener('click', extinguishCandle);
-
-    // 2. ဖုန်း/ကွန်ပျူတာ မိုက်ခရိုဖုန်းမှ လေမှုတ်သံဖမ်းယူပြီး မီးငြိမ်းမည့် မိုက်ခရိုဖုန်း စနစ် (Optional)
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(stream => {
-          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          const analyser = audioContext.createAnalyser();
-          const microphone = audioContext.createMediaStreamSource(stream);
-          microphone.connect(analyser);
-          analyser.fftSize = 256;
-
-          const bufferLength = analyser.frequencyBinCount;
-          const dataArray = new Uint8Array(bufferLength);
-
-          function checkBlow() {
-            analyser.getByteFrequencyData(dataArray);
-            let values = 0;
-            for (let i = 0; i < bufferLength; i++) {
-              values += dataArray[i];
-            }
-            let average = values / bufferLength;
-
-            // လေမှုတ်သံ (အသံကျယ်) မိပါက မီးငြိမ်းမည်
-            if (average > 40) {
-              extinguishCandle();
-            }
-            requestAnimationFrame(checkBlow);
-          }
-          checkBlow();
-        })
-        .catch(err => {
-          // မိုက်ခရိုဖုန်း ခွင့်မပြုထားပါကလည်း click နှိပ်ပြီး ငြိမ်းလို့ရပါသေးသည်
-          console.log("Microphone access denied or not supported.");
-        });
-    }
   </script>
+
 </body>
 </html>
