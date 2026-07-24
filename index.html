@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday!</title>
+  <title>Happy Birthday My Love!</title>
   <style>
     * {
       box-sizing: border-box;
@@ -21,22 +21,24 @@
       min-height: 100vh;
       text-align: center;
       overflow-x: hidden;
+      padding: 15px;
     }
 
     .container {
-      padding: 20px;
+      width: 100%;
+      max-width: 420px;
     }
 
     h1 {
       color: #d81b60;
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 10px;
     }
 
     p.instruction {
       color: #880e4f;
-      font-size: 1.1rem;
-      margin-bottom: 30px;
+      font-size: 1rem;
+      margin-bottom: 25px;
     }
 
     /* Cake & Candle Style */
@@ -103,67 +105,106 @@
       100% { transform: translateX(-50%) scale(1.1); }
     }
 
-    /* Pop-up Card Style */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
+    /* Multi-Card Presentation Style */
+    .presentation-container {
       display: none;
-      z-index: 10;
+      width: 100%;
+      max-width: 420px;
+      margin-top: 10px;
+    }
+
+    .presentation-container.show {
+      display: block;
+    }
+
+    .slide-page {
+      display: none;
+    }
+
+    .slide-page.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
       background: #fff;
-      padding: 25px;
+      padding: 15px;
       border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      width: 85%;
-      max-width: 380px;
-      opacity: 0;
-      transition: all 0.5s ease;
-      z-index: 11;
-      pointer-events: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+      text-align: center;
     }
 
-    .card.show {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-      pointer-events: auto;
+    .card-title {
+      color: #e91e63;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
 
     .card img {
       width: 100%;
-      max-height: 300px;
+      max-height: 260px;
       object-fit: cover;
       border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .card h2 {
-      color: #e91e63;
       margin-bottom: 10px;
-      font-size: 1.5rem;
     }
 
     .card p {
-      color: #555;
-      font-size: 1rem;
+      color: #444;
+      font-size: 0.92rem;
       line-height: 1.5;
+      background: #fff5f8;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    /* Controls (Buttons & Counter) */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 10px 15px;
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 10px;
+    }
+
+    .btn {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .page-counter {
+      color: #d81b60;
+      font-weight: bold;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="container" id="cakeSection">
     <h1>Happy Birthday! 🎂</h1>
-    <p class="instruction">မီးဖယောင်းတိုင်လေးကို နှိပ်ပြီး မီးငြိမ်းလိုက်ပါ (သို့) မှုတ်လိုက်ပါ</p>
+    <p class="instruction">မီးဖယောင်းတိုင်လေးကို နှိပ်ပြီး မီးငြိမ်းလိုက်ပါ</p>
 
     <div class="cake-container" id="cakeContainer">
       <div class="candle">
@@ -173,36 +214,115 @@
     </div>
   </div>
 
-  <div class="overlay" id="overlay"></div>
+  <div class="presentation-container" id="presentationContainer">
+    
+    <div class="slide-page active">
+      <div class="card">
+        <div class="card-title">Happy Birthday majo ✨</div>
+        <img src="https://i.ibb.co/21Mmsw1M/image.jpg" alt="Photo 1">
+        <p>Happy Birthday ပါ ချစ်ရတဲ့ကောင်မလေးရေ… 🤍🎂<br><br>ဒီနေ့က သဲတုန်းမွေးနေ့ဖြစ်လို့ အရင်ဆုံး ဆုတောင်းပေးချင်တာက သဲတုန်းအမြဲကျန်းမာပြီး ပျော်ရွှင်နေပါစေလို့ပါ။<br><br>နောက်ပြီး ပြောချင်တဲ့စကားတစ်ခွန်းကတော့ "ကျေးဇူးတင်ပါတယ်" ပါ။</p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/nN7MKsWT/image.jpg" alt="Photo 2">
+        <p>နေမကောင်းတဲ့အချိန် ဂရုစိုက်ပေးတာ၊ စိတ်ညစ်တဲ့အချိန် ဘေးမှာရှိပေးတာ၊ အသေးစိတ်လေးတွေကအစ အမှတ်တရထားပေးတာ… အဲဒီအရာလေးတွေအတွက် ကျေးဇူးတင်ပါတယ်။</p>
+      </div>
+    </div>
 
-  <!-- ကောင်မလေးပုံနဲ့ စာသား Card -->
-  <div class="card" id="birthdayCard">
-    <!-- ဒီနေရာမှာ မိမိပုံ Link ထည့်နိုင်ပါတယ် -->
-    <img src="https://i.ibb.co/b5tGSSTT/image.jpg" alt="Birthday Girl" id="girlPhoto">
-    <h2>Happy Birthday My Love! ❤️</h2>
-    <p>မွေးနေ့မှာ လိုအင်ဆန္ဒတွေအားလုံး ပြည့်ဝပါစေ။ အမြဲတမ်း ပြုံးပြုံးရွှင်ရွှင်နဲ့ ပျော်ရွှင်ပါစေနော်။</p>
+    <div class="slide-page">
+      <div class="card">
+        <img src="https://i.ibb.co/8DTjBPJH/image.jpg" alt="Photo 3">
+        <p>သဲတုန်းနဲ့တွေ့ခဲ့ရတာက ကိုယ့်ဘဝရဲ့ ကံကောင်းခြင်းတစ်ခုလိုပဲ။ သဲတုန်းပေးတဲ့ အချစ်နဲ့ နွေးထွေးမှုတွေကြောင့် နေ့ရက်တွေက ပိုပြီးလှလာခဲ့တယ်။</p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/M5DHLz3c/image.jpg" alt="Photo 4">
+        <p>သဲတုန်းကိုချစ်တဲ့အချစ်က နေ့တိုင်း လျော့သွားတာမဟုတ်ဘဲ ပိုပိုပြီး နက်ရှိုင်းလာတယ်။ သဲတုန်းရယ်တဲ့အချိန်လည်း ချစ်တယ်၊ စိတ်ဆိုးနေတဲ့အချိန်လည်း ချစ်တယ်၊ အားနည်းနေတဲ့အချိန်မှာတောင် သဲတုန်စဘေးမှာရှိပေးချင်တယ်။</p>
+      </div>
+    </div>
+
+    <div class="slide-page">
+      <div class="card">
+        <img src="https://i.ibb.co/v4Wqvxt1/image.jpg" alt="Photo 5">
+        <p>သဲတုန်စနဲ့တွေ့ခဲ့ရတာက ကိုယ့်ဘဝရဲ့ အလှဆုံးကံကောင်းခြင်းတစ်ခုပါ။ သဲတုန်းပေးတဲ့ အချစ်၊ ဂရုစိုက်မှု၊ နွေးထွေးမှုတွေကြောင့် ကိုယ့်နှလုံးသားက နေ့တိုင်း ပိုပြီးပြည့်စုံလာတယ်။</p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/20B6q3kr/image.jpg" alt="Photo 6">
+        <p>ဘယ်လိုအခြေအနေပဲ ကြုံလာကြုံလာ ကိုယ်လက်မလွှတ်ချင်တဲ့သူက သဲတုန်းတစ်ယောက်တည်းပါ။ အခုလည်းချစ်တယ်၊ နောင်လည်းချစ်နေဦးမယ်။ ကိုယ့်နှလုံးသားထဲမှာ မင်းက အမြဲတမ်း အရေးအပါဆုံးသူဖြစ်နေမှာပါ။</p>
+      </div>
+    </div>
+
+    <div class="slide-page">
+      <div class="card">
+        <img src="https://i.ibb.co/hx45gZZf/image.jpg" alt="Photo 7">
+        <p>အရမ်းချစ်တယ်… ဒီထက်ပိုပြီးလည်း ချစ်နေဦးမှာပါ။ 🤍❤️</p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/5XfKGGQk/image.jpg" alt="Photo 8">
+        <p>💖 မွေးနေ့မှာ ပျော်ရွှင်ခြင်း၊ အောင်မြင်ခြင်းနဲ့ ချစ်ခြင်းတွေ အမြဲရရှိပါစေ။</p>
+      </div>
+    </div>
+
+    <div class="slide-page">
+      <div class="card">
+        <img src="https://i.ibb.co/b5tGSSTT/image.jpg" alt="Photo 9">
+        <p>🌸 ဒီနေ့က မင်းအတွက် အပျော်ရွှင်ဆုံးနေ့လေး ဖြစ်ပါစေ။ Happy Birthday!</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="prevBtn" onclick="changeSlide(-1)">⬅️ နောက်သို့</button>
+      <span class="page-counter" id="pageCounter">စာမျက်နှာ 1 / 5</span>
+      <button class="btn" id="nextBtn" onclick="changeSlide(1)">ရှေ့သို့ ➡️</button>
+    </div>
+
   </div>
 
   <script>
     const flame = document.getElementById('flame');
     const cakeContainer = document.getElementById('cakeContainer');
-    const card = document.getElementById('birthdayCard');
-    const overlay = document.getElementById('overlay');
+    const cakeSection = document.getElementById('cakeSection');
+    const presentationContainer = document.getElementById('presentationContainer');
+    
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide-page');
+    const totalSlides = slides.length;
+    const pageCounter = document.getElementById('pageCounter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-    // မီးဖယောင်းတိုင် ငြိမ်းသွားချိန်လုပ်ဆောင်မည့် Function
-    function extinguishCandle() {
+    // မီးဖယောင်းတိုင် ငြိမ်းသွားချိန်လုပ်ဆောင်ချက်
+    cakeContainer.addEventListener('click', () => {
       if (!flame.classList.contains('off')) {
         flame.classList.add('off');
 
-        // မီးငြိမ်းပြီး ၁ စက္ကန့်အကြာမှာ ပုံနဲ့ Card ပေါ်လာမည်
         setTimeout(() => {
-          overlay.classList.add('show');
-          card.classList.add('show');
+          cakeSection.style.display = 'none';
+          presentationContainer.classList.add('show');
+          updateSlide();
         }, 800);
       }
+    });
+
+    // Slide ပြောင်းရန် Function
+    function changeSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = 0;
+      if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+      updateSlide();
     }
 
-    cakeContainer.addEventListener('click', extinguishCandle);
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        if (index === currentSlide) {
+          slide.classList.add('active');
+        }
+      });
+
+      pageCounter.innerText = `စာမျက်နှာ ${currentSlide + 1} / ${totalSlides}`;
+      
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === totalSlides - 1;
+    }
   </script>
 
 </body>
